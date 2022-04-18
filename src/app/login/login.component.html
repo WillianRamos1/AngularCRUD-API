@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="box">
+                    <div class="text-center mb-4">
+                        <h1>Tela de Login</h1>
+                        <h6>Por Favor Digite suas Credenciais de Login!</h6>
+                    </div>
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Endereço de Email</label>
+                            <input type="email" formControlName="usuarioNome" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                            <small id="emailHelp" class="form-text text-muted">Não compartilhe seu Email com ninguém.</small><br>
+                            <span class="text-danger" *ngIf="loginForm.controls['usuarioNome'].dirty && loginForm.hasError('required','usuarioNome')">*Digite seu Email</span>
+                            <span class="text-danger" *ngIf="loginForm.hasError('usuarioNome','usuarioNome')">*O Email digitado não é valido</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Senha</label>
+                            <input type="password" formControlName="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                            <span class="text-danger" *ngIf="loginForm.controls['senha'].dirty && loginForm.hasError('required','senha')">*Digite sua Senha</span>
+                        </div>
+
+                        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary mt-3">Entrar</button>
+                    </form>
+                    <a routerLink='/signup' style="float:right;color:#fff">Novo Usuario ? Registre-se Aqui!</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
